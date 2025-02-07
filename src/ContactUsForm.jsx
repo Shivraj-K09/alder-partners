@@ -42,7 +42,8 @@ function ContactForm({ isOpen, onClose, language }) {
           "Content-Type": "application/json",
         },
       });
-      console.log("API Response:", response.data);
+      console.log("API Response:", response);
+      console.log("API Response Data:", response.data);
       setSubmitSuccess(true);
       setFormData({
         fullName: "",

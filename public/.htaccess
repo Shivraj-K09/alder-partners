@@ -3,10 +3,11 @@
   RewriteEngine On
   RewriteBase /
 
-  # Redirect API requests to the Node.js handler
-  RewriteRule ^api/(.*)$ /api/index.js [L,QSA]
+  # Route API requests to index.js
+  RewriteRule ^api/?$ api/index.js [L]
+  RewriteRule ^api/(.*)$ api/index.js [L]
 
-  # Existing rules
+  # Existing rules for React app
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
@@ -16,6 +17,6 @@
 # Enable CORS
 <IfModule mod_headers.c>
   Header set Access-Control-Allow-Origin "*"
-  Header set Access-Control-Allow-Methods "GET, POST, OPTIONS"
-  Header set Access-Control-Allow-Headers "Origin, X-Requested-With, Content-Type, Accept"
+  Header set Access-Control-Allow-Methods "GET,POST,OPTIONS"
+  Header set Access-Control-Allow-Headers "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
 </IfModule>
