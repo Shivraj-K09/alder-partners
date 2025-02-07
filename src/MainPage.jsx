@@ -51,6 +51,7 @@ const NavLink = ({
   return (
     <div className={`flex items-center gap-2 ${showLink ? "" : "hidden"}`}>
       <LinkComponent
+        href="#0"
         {...linkProps}
         className={`text-[#898981] uppercase cursor-pointer hover:text-gray-300 transition-colors duration-200 ${
           isActiveLink && !isMobile ? "text-white" : ""
@@ -516,7 +517,7 @@ const LandingPage = ({ language, setLanguage, loading, setLoading }) => {
           </video>
           {!isVideoPlaying && (
             <button
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-50 text-black px-4 py-2 rounded-lg"
+              className="absolute top-1/2 left-1/2 transform sr-only -translate-x-1/2 -translate-y-1/2 bg-white bg-opacity-50 text-black px-4 py-2 rounded-lg"
               onClick={() => {
                 const video = videoRef.current;
                 if (video) {
@@ -779,6 +780,7 @@ const LandingPage = ({ language, setLanguage, loading, setLoading }) => {
                   setMobileMenuOpen(!mobileMenuOpen);
                   toggleBodyScroll(true);
                 }}
+                aria-label="Menu"
               >
                 <Menu size={30} />
               </button>

@@ -5,6 +5,7 @@ import path from "path";
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: "/", // Add this line
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -20,6 +21,7 @@ export default defineConfig({
   //   },
   // },
   server: {
+    open: true,
     port: 5174,
 
     proxy: {
@@ -29,5 +31,11 @@ export default defineConfig({
         secure: false,
       },
     },
+  },
+  build: {
+    outDir: "dist",
+    assetsDir: "assets",
+    // Ensure all files in public directory are copied
+    copyPublicDir: true,
   },
 });
