@@ -37,11 +37,15 @@ function ContactForm({ isOpen, onClose, language }) {
 
     try {
       console.log("Sending request to API...");
-      const response = await axios.post("/api/send-email", formData, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
+      const response = await axios.post(
+        "https://alder-partners-email-api.vercel.app/api/send-email",
+        formData,
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
       console.log("API Response:", response);
       console.log("API Response Data:", response.data);
       setSubmitSuccess(true);
